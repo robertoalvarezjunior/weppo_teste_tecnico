@@ -13,25 +13,43 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Weppo Flutter"),
-        actions: [
-          ElevatedButton(
-            onPressed: () => context.read<TotalCubit>().calculaTotalXMAS(),
-            child: Text('Retorna total de XMAS'),
-          ),
-          ElevatedButton(
-            onPressed: () => context.read<GridBloc>().add(GetGridEvent()),
-            child: Text('Grid view de XMAS'),
-          ),
-          ElevatedButton(
-            onPressed: () => context.read<GridBloc>().add(GetGridMenorEvent()),
-            child: Text('Grid view menor de XMAS'),
-          ),
-        ],
+        // actions: [
+        //   ElevatedButton(
+        //     onPressed: () => context.read<TotalCubit>().calculaTotalXMAS(),
+        //     child: Text('Retorna total de XMAS'),
+        //   ),
+        //   ElevatedButton(
+        //     onPressed: () => context.read<GridBloc>().add(GetGridEvent()),
+        //     child: Text('Grid view de XMAS'),
+        //   ),
+        //   ElevatedButton(
+        //     onPressed: () => context.read<GridBloc>().add(GetGridMenorEvent()),
+        //     child: Text('Grid view menor de XMAS'),
+        //   ),
+        // ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
+            OverflowBar(
+              children: [
+                ElevatedButton(
+                  onPressed: () =>
+                      context.read<TotalCubit>().calculaTotalXMAS(),
+                  child: Text('Retorna total de XMAS'),
+                ),
+                ElevatedButton(
+                  onPressed: () => context.read<GridBloc>().add(GetGridEvent()),
+                  child: Text('Grid view de XMAS'),
+                ),
+                ElevatedButton(
+                  onPressed: () =>
+                      context.read<GridBloc>().add(GetGridMenorEvent()),
+                  child: Text('Grid view menor de XMAS'),
+                ),
+              ],
+            ),
             BlocBuilder<TotalCubit, int>(
               builder: (context, state) => Text(
                 'Total: $state',
